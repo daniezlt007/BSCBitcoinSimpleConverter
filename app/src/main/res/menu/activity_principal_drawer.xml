@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_inicial"
+            android:title="Tela Inicial" />
+        <item
+            android:id="@+id/nav_calculadora_livre"
+            android:title="Calculadora Livre" />
+        <item
+            android:id="@+id/nav_lucro"
+            android:title="Consulte seu Lucro" />
+
+    </group>
+
+    <item android:title="Ajuda">
+        <menu>
+            <item
+                android:id="@+id/nav_blockchain"
+                android:title="O que é Blockchain?" />
+            <item
+                android:id="@+id/nav_bitcoin"
+                android:title="O que é Bitcoin?" />
+            <item
+                android:id="@+id/nav_wallet"
+                android:title="O que é Carteira Digital(Wallet)?" />
+        </menu>
+    </item>
+
+</menu>

@@ -1,0 +1,25 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="nav_header_vertical_spacing">16dp</dimen>
+    <dimen name="nav_header_height">160dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="txt_left_principal">20dp</dimen>
+    <dimen name="txt_top_principal">50dp</dimen>
+    <dimen name="walltime_top_btn">80dp</dimen>
+    <dimen name="walltime_top_txt">80dp</dimen>
+    <dimen name="mercadobtc_top_btn">130dp</dimen>
+    <dimen name="mercadobtc_top_txt">130dp</dimen>
+    <dimen name="foxbit_top_btn">180dp</dimen>
+    <dimen name="foxbit_top_txt">180dp</dimen>
+    <dimen name="bitcointoyou_top_btn">230dp</dimen>
+    <dimen name="bitcointoyou_txt">230dp</dimen>
+    <dimen name="bitcointrade_top_btn">280dp</dimen>
+    <dimen name="bitcointrade_txt">280dp</dimen>
+    <dimen name="negocicoin_top_btn">330dp</dimen>
+    <dimen name="negocicoin_txt">330dp</dimen>
+    <dimen name="txt_valor_frag_main">18sp</dimen>
+    <dimen name="txt_valor_exc_compra">140sp</dimen>
+    <dimen name="txt_valor_exc_venda">245sp</dimen>
+</resources>

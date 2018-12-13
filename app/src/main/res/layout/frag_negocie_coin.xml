@@ -1,0 +1,118 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backFragment"
+    android:orientation="vertical"
+    tools:context="com.deasystem.daniel.bscbitcoinsimpleconverter.fragmento.FragNegocieCoin">
+
+    <!-- TODO: Update blank fragment layout -->
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="45dp">
+
+        <RadioButton
+            android:id="@+id/realBitCoin"
+            android:layout_width="112dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/radio"
+            android:text="BRL -> BTC"
+            android:textColor="@android:color/black" />
+
+        <RadioButton
+            android:id="@+id/bitcoinReal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/radio"
+            android:text="BTC -> BRL"
+            android:textColor="@android:color/black" />
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/txtValorInvestidoConvertido"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/radioGroup"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="47dp"
+        android:ems="10"
+        android:background="@drawable/inputs"
+        android:padding="10dp"
+        android:enabled="false"
+        android:digits="0,1,2,3,4,5,6,7,8,9,.,,"
+        android:hint="BRL ou BTC?"
+        android:inputType="textPersonName|numberDecimal"
+        android:textAlignment="center" />
+
+    <EditText
+        android:id="@+id/txtValorCotacaoAtual"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/txtValorInvestidoConvertido"
+        android:layout_below="@+id/txtValorInvestidoConvertido"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/inputs"
+        android:ems="10"
+        android:enabled="false"
+        android:hint="NegocieCoins"
+        android:inputType="textPersonName|numberDecimal"
+        android:padding="10dp"
+        android:textAlignment="center"
+        android:textColor="@android:color/background_dark" />
+
+    <EditText
+        android:id="@+id/txtResultado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/txtValorCotacaoAtual"
+        android:layout_below="@+id/txtValorCotacaoAtual"
+        android:layout_marginTop="24dp"
+        android:ems="10"
+        android:background="@drawable/inputs"
+        android:padding="10dp"
+        android:enabled="false"
+        android:hint="Valor Convertido"
+        android:inputType="textPersonName|numberDecimal"
+        android:textAlignment="center"
+        android:textColor="@android:color/background_dark" />
+
+    <!--<Button
+        android:id="@+id/btnCalcular"
+        style="@style/button_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtResultado"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="54dp"
+        android:background="@drawable/botoes"
+        android:text="Converter"
+        android:textColor="@android:color/background_light" />-->
+    <com.google.android.gms.ads.AdView
+        xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="35dp"
+        ads:adSize="BANNER"
+        android:layout_gravity="bottom"
+        ads:adUnitId="@string/codigoAdmob">
+    </com.google.android.gms.ads.AdView>
+
+    <TextView
+        android:id="@+id/txtViewTaxa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtResultado"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="31dp"
+        android:textSize="20sp" />
+</RelativeLayout>

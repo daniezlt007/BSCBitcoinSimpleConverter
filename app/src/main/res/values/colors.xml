@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#fa334a</color>
+    <color name="colorPrimaryDark">#4e4848</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="colorRadio">#4e4848</color>
+    <color name="colorCompra">#008B45</color>
+    <color name="colorVenda">#A52A2A</color>
+    <color name="colorFundo">#000000</color>
+    <color name="backFragment">#FFFFFF</color>
+
+</resources>

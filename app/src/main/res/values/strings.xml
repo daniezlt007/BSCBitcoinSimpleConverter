@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">BSC Bitcoin Simple Converter</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Tela Inicial</string>
+    <string name="action_about">Sobre</string>
+    <string name="action_exit">Sair</string>
+
+    <string name="txt_walltime">WALLTIME</string>
+    <string name="txt_mercadobitcoin">M.BITCOIN</string>
+    <string name="txt_foxbit">FOXBIT</string>
+    <string name="txt_bitcointoyou">BITCOINTOYOU</string>
+    <string name="txt_bitcointrade">BITCOINTRADE</string>
+    <string name="txt_negociecoins">NEGOCIECOINS</string>
+
+    <string name="txt_exchange">EXCHANGE</string>
+    <string name="txt_compra">COMPRA</string>
+    <string name="txt_venda">VENDA</string>
+
+    <string name="btn_consultar">ATUALIZAR</string>
+
+    <string name="codigoAdmob">ca-app-pub-1974086740128373/9663553135</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>

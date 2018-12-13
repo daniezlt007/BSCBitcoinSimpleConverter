@@ -1,0 +1,126 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backFragment"
+    android:orientation="vertical"
+    tools:context="com.deasystem.daniel.bscbitcoinsimpleconverter.fragmento.FragBitcoinToYou">
+
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <EditText
+        android:id="@+id/txtValorInvestidoConvertido"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/txtCotacaoDeCompra"
+        android:layout_below="@+id/txtCotacaoDeCompra"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/inputs"
+        android:digits="0,1,2,3,4,5,6,7,8,9,.,,"
+        android:ems="10"
+        android:enabled="false"
+        android:hint="Qtd BTC"
+        android:inputType="textPersonName"
+        android:padding="10dp"
+        android:textAlignment="center"
+        android:textColor="@android:color/background_dark" />
+
+    <EditText
+        android:id="@+id/txtCotacaoDeCompra"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/txtValorInvestido"
+        android:layout_below="@+id/txtValorInvestido"
+        android:layout_marginTop="17dp"
+        android:background="@drawable/inputs"
+        android:digits="0,1,2,3,4,5,6,7,8,9,.,,"
+        android:ems="10"
+        android:enabled="true"
+        android:hint="Cotação de Compra"
+        android:inputType="textPersonName|numberDecimal"
+        android:padding="10dp"
+        android:textAlignment="center" />
+
+    <EditText
+        android:id="@+id/txtValorInvestido"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/radioGroup"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="47dp"
+        android:background="@drawable/inputs"
+        android:digits="0,1,2,3,4,5,6,7,8,9,.,,"
+        android:ems="10"
+        android:enabled="true"
+        android:hint="Valor Investido em R$"
+        android:inputType="textPersonName|numberDecimal"
+        android:padding="10dp"
+        android:textAlignment="center" />
+
+    <Spinner
+        android:id="@+id/id_spinner"
+
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="67dp"
+        android:spinnerMode="dialog"
+        android:textAlignment="center" />
+
+    <EditText
+        android:id="@+id/txtValorCotacaoAtual"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/txtValorInvestidoConvertido"
+        android:layout_below="@+id/id_spinner"
+        android:layout_marginTop="34dp"
+        android:background="@drawable/inputs"
+        android:ems="10"
+        android:enabled="false"
+        android:hint="Cotação Atual"
+        android:inputType="textPersonName|numberDecimal"
+        android:padding="10dp"
+        android:textAlignment="center"
+        android:textColor="@android:color/background_dark" />
+
+    <EditText
+        android:id="@+id/txtValorEmReaisAtual"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/txtValorCotacaoAtual"
+        android:layout_below="@+id/txtValorCotacaoAtual"
+        android:layout_marginTop="18dp"
+        android:background="@drawable/inputs"
+        android:ems="10"
+        android:enabled="false"
+        android:hint="Valor de Lucro"
+        android:inputType="textPersonName|numberDecimal"
+        android:padding="10dp"
+        android:textAlignment="center"
+        android:textColor="@android:color/background_dark" />
+
+    <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="bottom"
+        android:layout_marginLeft="35dp"
+        ads:adSize="BANNER"
+        ads:adUnitId="@string/codigoAdmob"></com.google.android.gms.ads.AdView>
+
+    <TextView
+        android:id="@+id/txtResultadoLucro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/adView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="18dp"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+</RelativeLayout>
