@@ -1,0 +1,2 @@
+# BSCBitcoinSimpleConverter
+Simples Conversor Bitcoin
