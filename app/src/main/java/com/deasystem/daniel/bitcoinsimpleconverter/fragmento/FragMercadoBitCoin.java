@@ -48,7 +48,7 @@ public class FragMercadoBitCoin extends Fragment {
 
     private AlertDialog alerta;
     private AdView mAdView;
-    private EditText txtValor1, txtValor2, txtResultado;
+    private EditText txtValorInvestidoConvertido, txtValorCotacaoAtual, txtResultado;
     private TextView txtViewTaxaMB;
 
     private RadioGroup radioGroup;
@@ -76,21 +76,14 @@ public class FragMercadoBitCoin extends Fragment {
         mAdView.loadAd(adRequest);
 
         txtViewTaxaMB = view.findViewById(R.id.textViewTaxaMB);
-        txtValor1 = view.findViewById(R.id.txtValorInvestidoConvertido);
-        txtValor2 = view.findViewById(R.id.txtValorCotacaoAtual);
+        txtValorInvestidoConvertido = view.findViewById(R.id.txtValorInvestidoConvertido);
+        txtValorCotacaoAtual = view.findViewById(R.id.txtValorCotacaoAtual);
         txtResultado = view.findViewById(R.id.txtResultado);
         radioButtonRealBtc = view.findViewById(R.id.realBitCoin);
         radioButtonBtcReal = view.findViewById(R.id.bitcoinReal);
         radioGroup = view.findViewById(R.id.radioGroup);
 
-        txtValor1 = view.findViewById(R.id.txtValorInvestidoConvertido);
-        txtValor2 = view.findViewById(R.id.txtValorCotacaoAtual);
-        txtResultado = view.findViewById(R.id.txtResultado);
-        radioButtonRealBtc = view.findViewById(R.id.realBitCoin);
-        radioButtonBtcReal = view.findViewById(R.id.bitcoinReal);
-        radioGroup = view.findViewById(R.id.radioGroup);
-
-        txtValor1.addTextChangedListener(new TextWatcher() {
+        txtValorInvestidoConvertido.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -108,8 +101,8 @@ public class FragMercadoBitCoin extends Fragment {
                     ConnectivityManager connMgr = (ConnectivityManager) getActivity().getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
                     NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
                     if (networkInfo != null && networkInfo.isConnected()) {
-                        String a = txtValor1.getText().toString();
-                        String b = txtValor2.getText().toString();
+                        String a = txtValorInvestidoConvertido.getText().toString();
+                        String b = txtValorCotacaoAtual.getText().toString();
 
                         int idRadioButton = radioGroup.getCheckedRadioButtonId();
                         if (idRadioButton <= 0) {
@@ -118,34 +111,33 @@ public class FragMercadoBitCoin extends Fragment {
 
                             if (radioButtonRealBtc.isChecked() == true) {
                                 if (a.equals("")) {
-                                    txtValor1.setError("Esse campo é obrigatório.");
+                                    txtValorInvestidoConvertido.setError("Esse campo é obrigatório.");
                                 } else if (b.equals("")) {
-                                    //txtValor2.setError("");
+                                    //txtValorCotacaoAtual.setError("");
                                     Toast.makeText(getActivity(), "Verifique a conexão, o campo cotação deve ser preenchido automaticamente.", Toast.LENGTH_LONG).show();
                                 } else {
-                                    double val1 = Double.parseDouble(txtValor1.getText().toString().replace(",", "."));
-                                    double val2 = Double.parseDouble(txtValor2.getText().toString().replace("R$", "").replace(".", "").replace(",", "."));
-                                    double taxa = 0.70;
-                                    double valorComTaxa = converterRealBtc(val1, val2) * taxa / 100;
-                                    txtResultado.setText("BTC " + String.valueOf(numeroFormatado(converterRealBtc(val1, val2) - valorComTaxa).replace(".", ",")));
-                                    txtViewTaxaMB.setText("BTC sem Taxa: " + numeroFormatado(converterRealBtc(val1, val2)).replace(".", ","));
+                                    double val1 = Double.parseDouble(txtValorInvestidoConvertido.getText().toString().replace(",", "."));
+                                    double val2 = Double.parseDouble(txtValorCotacaoAtual.getText().toString().replace("R$", "").replace(".", "").replace(",", "."));
+                                    double taxa = Double.parseDouble("0,00010000".toString().replace(",", "."));
+                                    txtResultado.setText("BTC " + String.valueOf(Util.valorEmBtcFormatado(Util.converterRealBtc(val1, val2) - taxa).replace(".", ",")));
+                                    txtViewTaxaMB.setText("BTC sem Taxa: " + Util.valorEmBtcFormatado(Util.converterRealBtc(val1, val2)).replace(".", ","));
                                 }
                             }
 
                             if (radioButtonBtcReal.isChecked() == true) {
                                 if (a.equals("")) {
-                                    txtValor1.setError("Esse campo é obrigatório.");
+                                    txtValorInvestidoConvertido.setError("Esse campo é obrigatório.");
                                 } else if (b.equals("")) {
-                                    //txtValor2.setError("");
+                                    //txtValorCotacaoAtual.setError("");
                                     Toast.makeText(getActivity(), "Verifique a conexão, o campo cotação deve ser preenchido automaticamente.", Toast.LENGTH_LONG).show();
                                 } else {
                                     NumberFormat formato = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
-                                    double val1 = Double.parseDouble(txtValor1.getText().toString().replace(",", "."));
-                                    double val2 = Double.parseDouble(txtValor2.getText().toString().replace("R$", "").replace(".", "").replace(",", "."));
-                                    double taxa = 0.70;
-                                    double valorComTaxa = converterBtcReal(val1, val2) * taxa / 100;
-                                    txtResultado.setText(formato.format(converterBtcReal(val1, val2) - valorComTaxa));
-                                    txtViewTaxaMB.setText("BRL sem taxa " + formato.format(converterBtcReal(val1, val2)));
+                                    double val1 = Double.parseDouble(txtValorInvestidoConvertido.getText().toString().replace(",", "."));
+                                    double val2 = Double.parseDouble(txtValorCotacaoAtual.getText().toString().replace("R$", "").replace(".", "").replace(",", "."));
+                                    double taxa = 1.99;
+                                    double valorComTaxa = Util.converterBtcReal(val1, val2) * taxa / 100;
+                                    txtResultado.setText(Util.numeroformatadoEmReal.format(Util.converterBtcReal(val1, val2) - valorComTaxa));
+                                    txtViewTaxaMB.setText("BRL sem taxa " + Util.numeroformatadoEmReal.format(Util.converterBtcReal(val1, val2)));
                                 }
                             }
 
@@ -164,19 +156,19 @@ public class FragMercadoBitCoin extends Fragment {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 int idRadioButton = group.getCheckedRadioButtonId();
-
+                int flag = 0;
                 if(idRadioButton == radioButtonRealBtc.getId()){
-                    txtValor1.setHint("BRL -> BTC");
+                    flag = 1;
+                    txtValorInvestidoConvertido.setHint("BRL -> BTC");
                     limparCampos();
-                    volleyStringRequst(Util.STRING_MERCADOBITCOIN);
-                    //Toast.makeText(MainActivity.this, "RadioButton: " + radioButtonRealBtc.getText().toString(), Toast.LENGTH_SHORT).show();
+                    volleyStringRequest(flag, Util.STRING_MERCADOBITCOIN);
                 }
 
                 if(checkedId == radioButtonBtcReal.getId()){
-                    txtValor1.setHint("BTC -> BRL");
+                    flag = 2;
+                    txtValorInvestidoConvertido.setHint("BTC -> BRL");
                     limparCampos();
-                    volleyStringRequest(Util.STRING_MERCADOBITCOIN);
-                    //Toast.makeText(MainActivity.this, "RadioButton: " + radioButtonBtcReal.getText().toString(), Toast.LENGTH_SHORT).show();
+                    volleyStringRequest(flag ,Util.STRING_MERCADOBITCOIN);
                 }
             }
         });
@@ -185,66 +177,31 @@ public class FragMercadoBitCoin extends Fragment {
         return view;
     }
 
-
-    public double converterRealBtc(double v1, double v2){
-        return v1 / v2;
-    }
-
-    public double converterBtcReal(double v1, double v2){
-        return v1 * v2;
-    }
-
     public void limparCampos(){
-        txtValor1.setEnabled(true);
-        txtValor2.setEnabled(false);
-        txtValor1.setText("");
-        txtValor2.setText("");
+        txtValorInvestidoConvertido.setEnabled(true);
+        txtValorCotacaoAtual.setEnabled(false);
+        txtValorInvestidoConvertido.setText("");
+        txtValorCotacaoAtual.setText("");
         txtViewTaxaMB.setText("");
         txtResultado.setText("");
     }
 
-    public static String numeroFormatado(double valor) {
-        DecimalFormat dc = new DecimalFormat("#,##0.0000000");
-        return dc.format(valor);
-    }
-
-    public static String numeroFormatadoReal(double valor) {
-        DecimalFormat dc = new DecimalFormat("#,##0.00");
-        return dc.format(valor);
-    }
-
-    public void volleyStringRequst(String url){
+    public void volleyStringRequest(final int codigo, String url){
         String  REQUEST_TAG = "com.androidtutorialpoint.volleyStringRequest";
 
         StringRequest strReq = new StringRequest(url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                String teste = response;
-                double valor = retornaObjeto(teste, 1);
-                NumberFormat formato = NumberFormat.getCurrencyInstance(new Locale("pt","BR"));
-                txtValor2.setText(formato.format(valor));
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
+                String json = response;
+                MercadoBitCoin mercadoBitcoin = Util.retornaObjetoMercadoBitcoin(json);
+                double valorCompra = mercadoBitcoin.getBuy();
+                double valorVenda  = mercadoBitcoin.getSell();
 
-            }
-        });
-        // Adding String request to request queue
-        AppSingleton.getInstance(getActivity().getApplicationContext()).addToRequestQueue(strReq, REQUEST_TAG);
-    }
-
-
-    public void volleyStringRequest(String url){
-        String  REQUEST_TAG = "com.androidtutorialpoint.volleyStringRequest";
-
-        StringRequest strReq = new StringRequest(url, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                String teste = response;
-                double valor = retornaObjeto(teste, 2);
-                NumberFormat formato = NumberFormat.getCurrencyInstance(new Locale("pt","BR"));
-                txtValor2.setText(formato.format(valor));
+                if(codigo == 1){
+                    txtValorCotacaoAtual.setText(Util.numeroformatadoEmReal.format(valorCompra));
+                }else{
+                    txtValorCotacaoAtual.setText(Util.numeroformatadoEmReal.format(valorVenda));
+                }
             }
         }, new Response.ErrorListener() {
             @Override
@@ -322,7 +279,7 @@ public class FragMercadoBitCoin extends Fragment {
         //define um botão como positivo
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface arg0, int arg1) {
-                txtValor1.setText("");
+                txtValorInvestidoConvertido.setText("");
                 txtResultado.setText("");
             }
         });

@@ -75,12 +75,6 @@ public class FragNegocieCoin extends Fragment {
         radioButtonBtcReal = view.findViewById(R.id.bitcoinReal);
         radioGroup = view.findViewById(R.id.radioGroup);
 
-        txtValor1 = view.findViewById(R.id.txtValorInvestidoConvertido);
-        txtValor2 = view.findViewById(R.id.txtValorCotacaoAtual);
-        txtResultado = view.findViewById(R.id.txtResultado);
-        radioButtonRealBtc = view.findViewById(R.id.realBitCoin);
-        radioButtonBtcReal = view.findViewById(R.id.bitcoinReal);
-        radioGroup = view.findViewById(R.id.radioGroup);
 
         txtValor1.addTextChangedListener(new TextWatcher() {
             @Override
@@ -118,8 +112,8 @@ public class FragNegocieCoin extends Fragment {
                                     double val1 = Double.parseDouble(txtValor1.getText().toString().replace(",", "."));
                                     double val2 = Double.parseDouble(txtValor2.getText().toString().replace("R$", "").replace(".", "").replace(",", "."));
                                     double taxa = Double.parseDouble("0,00183430".toString().replace(",", "."));
-                                    txtResultado.setText("BTC " + String.valueOf(numeroFormatado(converterRealBtc(val1, val2) - taxa)).replace(".", ","));
-                                    txtViewTaxa.setText("Valor sem Taxa: " + numeroFormatado(converterRealBtc(val1, val2)));
+                                    txtResultado.setText("BTC " + String.valueOf(Util.valorEmBtcFormatado(Util.converterRealBtc(val1, val2) - taxa)).replace(".", ","));
+                                    txtViewTaxa.setText("Valor sem Taxa: " + Util.valorEmBtcFormatado(Util.converterRealBtc(val1, val2)));
                                 }
                             }
 
@@ -130,10 +124,12 @@ public class FragNegocieCoin extends Fragment {
                                     //txtValor2.setError("");
                                     Toast.makeText(getActivity(), "Verifique a conexão, o campo cotação deve ser preenchido automaticamente.", Toast.LENGTH_LONG).show();
                                 } else {
-                                    NumberFormat formato = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
                                     double val1 = Double.parseDouble(txtValor1.getText().toString().replace(",", "."));
                                     double val2 = Double.parseDouble(txtValor2.getText().toString().replace("R$", "").replace(".", "").replace(",", "."));
-                                    txtResultado.setText(formato.format(converterBtcReal(val1, val2)));
+                                    double taxa = 1.39;
+                                    double valorComTaxa = Util.converterBtcReal(val1, val2) * taxa / 100;
+                                    txtResultado.setText(Util.numeroformatadoEmReal.format(Util.converterBtcReal(val1, val2) - valorComTaxa));
+                                    txtViewTaxa.setText("BRL sem taxa " + Util.numeroformatadoEmReal.format(Util.converterBtcReal(val1, val2)));
                                 }
                             }
 
@@ -243,14 +239,6 @@ public class FragNegocieCoin extends Fragment {
         AppSingleton.getInstance(getActivity().getApplicationContext()).addToRequestQueue(strReq, REQUEST_TAG);
     }
 
-    public double converterRealBtc(double v1, double v2) {
-        return v1 / v2;
-    }
-
-    public double converterBtcReal(double v1, double v2) {
-        return v1 * v2;
-    }
-
     public void limparCampos() {
         txtValor1.setEnabled(true);
         txtValor2.setEnabled(false);
@@ -258,16 +246,6 @@ public class FragNegocieCoin extends Fragment {
         txtValor2.setText("");
         txtResultado.setText("");
         txtViewTaxa.setText("");
-    }
-
-    public static String numeroFormatado(double valor) {
-        DecimalFormat dc = new DecimalFormat("#,##0.0000000");
-        return dc.format(valor);
-    }
-
-    public static String numeroFormatadoReal(double valor) {
-        DecimalFormat dc = new DecimalFormat("#,##0.00");
-        return dc.format(valor);
     }
 
     public void Alerta(){

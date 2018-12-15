@@ -4,7 +4,7 @@ xmlns:ads="http://schemas.android.com/apk/res-auto"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
 android:background="@color/backFragment"
-tools:context="com.deasystem.daniel.bscbitcoinsimpleconverter.fragmento.FragBlockChain"
+tools:context=".fragmento.FragBlockChain"
 android:orientation="vertical">
 
 <ScrollView

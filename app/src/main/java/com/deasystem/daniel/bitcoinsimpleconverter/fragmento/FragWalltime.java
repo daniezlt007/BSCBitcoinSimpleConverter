@@ -84,13 +84,6 @@ public class FragWalltime extends Fragment {
         radioButtonBtcReal = view.findViewById(R.id.bitcoinReal);
         radioGroup = view.findViewById(R.id.radioGroup);
 
-        txtValor1 = view.findViewById(R.id.txtValorInvestidoConvertido);
-        txtValor2 = view.findViewById(R.id.txtValorCotacaoAtual);
-        txtResultado = view.findViewById(R.id.txtResultado);
-        radioButtonRealBtc = view.findViewById(R.id.realBitCoin);
-        radioButtonBtcReal = view.findViewById(R.id.bitcoinReal);
-        radioGroup = view.findViewById(R.id.radioGroup);
-
         txtValor1.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -121,14 +114,13 @@ public class FragWalltime extends Fragment {
                                 if (a.equals("")) {
                                     txtValor1.setError("Esse campo é obrigatório.");
                                 } else if (b.equals("")) {
-                                    //txtValor2.setError("");
                                     Toast.makeText(getActivity(), "Verifique a conexão, o campo cotação deve ser preenchido automaticamente.", Toast.LENGTH_LONG).show();
                                 } else {
                                     double val1 = Double.parseDouble(txtValor1.getText().toString().replace(",", "."));
                                     double val2 = Double.parseDouble(txtValor2.getText().toString().replace("R$", "").replace(".", "").replace(",", "."));
-                                    double taxa = Double.parseDouble("0,00183430".toString().replace(",", "."));
-                                    txtResultado.setText("BTC " + String.valueOf(numeroFormatado(converterRealBtc(val1, val2) - taxa)).replace(".", ","));
-                                    txtViewTaxa.setText("Valor sem Taxa: " + numeroFormatado(converterRealBtc(val1, val2)));
+                                    double taxa = Double.parseDouble("0,00010000".toString().replace(",", "."));
+                                    txtResultado.setText("BTC " + String.valueOf(Util.valorEmBtcFormatado(Util.converterRealBtc(val1, val2) - taxa)).replace(".", ","));
+                                    txtViewTaxa.setText("Valor sem Taxa: " + Util.valorEmBtcFormatado(Util.converterRealBtc(val1, val2)));
                                 }
                             }
 
@@ -136,13 +128,14 @@ public class FragWalltime extends Fragment {
                                 if (a.equals("")) {
                                     txtValor1.setError("Esse campo é obrigatório.");
                                 } else if (b.equals("")) {
-                                    //txtValor2.setError("");
                                     Toast.makeText(getActivity(), "Verifique a conexão, o campo cotação deve ser preenchido automaticamente.", Toast.LENGTH_LONG).show();
                                 } else {
-                                    NumberFormat formato = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
                                     double val1 = Double.parseDouble(txtValor1.getText().toString().replace(",", "."));
                                     double val2 = Double.parseDouble(txtValor2.getText().toString().replace("R$", "").replace(".", "").replace(",", "."));
-                                    txtResultado.setText(formato.format(converterBtcReal(val1, val2)));
+                                    double taxa = 1.23;
+                                    double valorComTaxa = Util.converterBtcReal(val1, val2) * taxa / 100;
+                                    txtResultado.setText(Util.numeroformatadoEmReal.format(Util.converterBtcReal(val1, val2) - valorComTaxa));
+                                    txtViewTaxa.setText("BRL sem taxa " + Util.numeroformatadoEmReal.format(Util.converterBtcReal(val1, val2)));
                                 }
                             }
 
@@ -151,7 +144,6 @@ public class FragWalltime extends Fragment {
                         Toast.makeText(getActivity(), "Nenhuma conexão foi detectada", Toast.LENGTH_LONG).show();
                     }
                 } catch (Exception e) {
-                    //Toast.makeText(getActivity(), "Padrão de Valor informado incorreto", Toast.LENGTH_SHORT).show();
                     Alerta();
                 }
             }
@@ -165,31 +157,18 @@ public class FragWalltime extends Fragment {
                 if (idRadioButton == radioButtonRealBtc.getId()) {
                     txtValor1.setHint("BRL -> BTC");
                     limparCampos();
-                    //btnCalcular.setText("BRL -> BTC");
                     volleyStringRequst(Util.STRING_WALLTIME);
-                    //Toast.makeText(MainActivity.this, "RadioButton: " + radioButtonRealBtc.getText().toString(), Toast.LENGTH_SHORT).show();
                 }
 
                 if (checkedId == radioButtonBtcReal.getId()) {
                     txtValor1.setHint("BTC -> BRL");
                     limparCampos();
-                    //btnCalcular.setText("BTC -> BRL");
                     volleyStringRequest(Util.STRING_WALLTIME);
-                    //Toast.makeText(MainActivity.this, "RadioButton: " + radioButtonBtcReal.getText().toString(), Toast.LENGTH_SHORT).show();
                 }
             }
         });
 
         return view;
-    }
-
-
-    public double converterRealBtc(double v1, double v2) {
-        return v1 / v2;
-    }
-
-    public double converterBtcReal(double v1, double v2) {
-        return v1 * v2;
     }
 
     public void limparCampos() {
@@ -201,16 +180,6 @@ public class FragWalltime extends Fragment {
         txtViewTaxa.setText("");
     }
 
-    public static String numeroFormatado(double valor) {
-        DecimalFormat dc = new DecimalFormat("#,##0.0000000");
-        return dc.format(valor);
-    }
-
-    public static String numeroFormatadoReal(double valor) {
-        DecimalFormat dc = new DecimalFormat("#,##0.00");
-        return dc.format(valor);
-    }
-
     public void volleyStringRequst(String url) {
         String REQUEST_TAG = "com.androidtutorialpoint.volleyStringRequest";
 
@@ -218,9 +187,9 @@ public class FragWalltime extends Fragment {
             @Override
             public void onResponse(String response) {
 
-                String retorno = response;
-                NumberFormat formato = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
-                RetWalltime cotacao = JSONGsonObjeto(retorno);
+                String json = response;
+
+                RetWalltime cotacao = Util.retornaObjetoWalltime(json);
                 String res = cotacao.getRetWalltime2().getXbt_brl();
                 if (res.contains("/")) {
                     String[] explode = res.split("/");
@@ -230,16 +199,16 @@ public class FragWalltime extends Fragment {
                     double val2 = Double.parseDouble(v2);
                     if (explode[1] == null || explode[1].isEmpty()) {
                         double total = val2 / 1;
-                        txtValor2.setText(formato.format(total));
+                        txtValor2.setText(Util.numeroformatadoEmReal.format(total));
                     } else {
                         double total = val2 / val1;
-                        txtValor2.setText(formato.format(total));
+                        txtValor2.setText(Util.numeroformatadoEmReal.format(total));
 
                     }
                 } else {
                     double total = Double.parseDouble(res);
 
-                    txtValor2.setText(formato.format(total));
+                    txtValor2.setText(Util.numeroformatadoEmReal.format(total));
                 }
             }
         }, new Response.ErrorListener() {
@@ -260,9 +229,8 @@ public class FragWalltime extends Fragment {
             @Override
             public void onResponse(String response) {
 
-                String teste = response;
-                NumberFormat formato = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
-                RetWalltime cotacao = JSONGsonObjeto(teste);
+                String json = response;
+                RetWalltime cotacao = Util.retornaObjetoWalltime(json);
                 String res = cotacao.getRetWalltime2().getBrl_xbt();
 
                 if (res.contains("/")) {
@@ -274,16 +242,16 @@ public class FragWalltime extends Fragment {
                     if (explode[0] == null || explode[0].isEmpty()) {
                         double total = val1 / 1;
 
-                        txtValor2.setText(formato.format(total));
+                        txtValor2.setText(Util.numeroformatadoEmReal.format(total));
                     } else {
                         double total = val1 / val2;
-                        txtValor2.setText(formato.format(total));
+                        txtValor2.setText(Util.numeroformatadoEmReal.format(total));
 
                     }
                 } else {
                     double total = Double.parseDouble(res);
 
-                    txtValor2.setText(formato.format(total));
+                    txtValor2.setText(Util.numeroformatadoEmReal.format(total));
                 }
             }
         }, new Response.ErrorListener() {
@@ -294,40 +262,6 @@ public class FragWalltime extends Fragment {
         });
         // Adding String request to request queue
         AppSingleton.getInstance(getActivity().getApplicationContext()).addToRequestQueue(strReq, REQUEST_TAG);
-    }
-
-    public void volleyCacheRequest(String url) {
-        Cache cache = AppSingleton.getInstance(getActivity().getApplicationContext()).getRequestQueue().getCache();
-        Cache.Entry entry = cache.get(url);
-        if (entry != null) {
-            try {
-                String data = new String(entry.data, "UTF-8");
-                // handle data, like converting it to xml, json, bitmap etc.,
-            } catch (UnsupportedEncodingException e) {
-                e.printStackTrace();
-            }
-        } else {
-
-        }
-    }
-
-    public void volleyInvalidateCache(String url) {
-        AppSingleton.getInstance(getActivity().getApplicationContext()).getRequestQueue().getCache().invalidate(url, true);
-    }
-
-    public void volleyDeleteCache(String url) {
-        AppSingleton.getInstance(getActivity().getApplicationContext()).getRequestQueue().getCache().remove(url);
-    }
-
-    public void volleyClearCache() {
-        AppSingleton.getInstance(getActivity().getApplicationContext()).getRequestQueue().getCache().clear();
-    }
-
-
-    public RetWalltime JSONGsonObjeto(String jsonString) {
-        Gson gson = new Gson();
-        RetWalltime cotacao = gson.fromJson(jsonString, RetWalltime.class);
-        return cotacao;
     }
 
     public void Alerta(){

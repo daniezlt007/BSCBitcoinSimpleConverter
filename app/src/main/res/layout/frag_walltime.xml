@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/backFragment"
     android:orientation="vertical"
-    tools:context="com.deasystem.daniel.bscbitcoinsimpleconverter.fragmento.FragWalltime">
+    tools:context=".fragmento.FragWalltime">
 
     <!-- TODO: Update blank fragment layout -->
     <RadioGroup

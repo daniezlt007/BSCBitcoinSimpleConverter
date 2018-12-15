@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/backFragment"
     android:orientation="vertical"
-    tools:context="com.deasystem.daniel.bscbitcoinsimpleconverter.fragmento.FragWalltime">
+    tools:context=".fragmento.FragWalltime">
 
     <!-- TODO: Update blank fragment layout -->
     <RadioGroup
@@ -95,4 +95,14 @@
         android:layout_gravity="bottom"
         ads:adUnitId="@string/codigoAdmob">
     </com.google.android.gms.ads.AdView>
+
+    <TextView
+        android:id="@+id/textViewBitcointradeTaxa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtResultado"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="31dp"
+        android:textSize="20sp" />
+
 </RelativeLayout>

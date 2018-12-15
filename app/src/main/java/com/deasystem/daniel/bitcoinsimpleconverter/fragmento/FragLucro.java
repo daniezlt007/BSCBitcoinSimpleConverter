@@ -21,6 +21,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.deasystem.daniel.bitcoinsimpleconverter.R;
+import com.deasystem.daniel.bitcoinsimpleconverter.common.Util;
 import com.deasystem.daniel.bitcoinsimpleconverter.modelo.AppSingleton;
 import com.deasystem.daniel.bitcoinsimpleconverter.modelo.BitcoinToYou;
 import com.deasystem.daniel.bitcoinsimpleconverter.modelo.MercadoBitCoin;
@@ -52,12 +53,6 @@ public class FragLucro extends Fragment {
             txtValorInvestidoConvertido, txtValorCotacaoAtual,
             txtValorEmReaisAtual;
     private TextView txtResultadoLucro;
-
-    private String STRING_REQUEST_URL = "https://s3.amazonaws.com/data-production-walltime-info/production/dynamic/meta.json";
-    private String STRING_REQUEST_URL_MERCADO = "https://www.mercadobitcoin.net/api/btc/ticker/";
-    private String STRING_REQUEST_URL_BITCOINTOYOU = "https://www.bitcointoyou.com/api/ticker.aspx";
-    private String STRING_REQUEST_URL_FOXBIT = "https://api.bitvalor.com/v1/order_book_stats.json";
-    private String STRING_REQUEST_URL_BITCOINTRADE = "https://api.bitcointrade.com.br/v1/public/BTC/ticker";
 
     public FragLucro() {
         // Required empty public constructor
@@ -116,7 +111,7 @@ public class FragLucro extends Fragment {
                     try {
                         double val1 = Double.parseDouble(a.replace(",", "."));
                         double val2 = Double.parseDouble(b.replace(",", "."));
-                        txtValorInvestidoConvertido.setText(String.valueOf(numeroFormatado(converterRealBtc(val1, val2))).replace(".", ","));
+                        txtValorInvestidoConvertido.setText(String.valueOf(Util.valorEmBtcFormatado(Util.converterRealBtc(val1, val2))).replace(".", ","));
                     } catch (Exception e) {
                         alerta("Verifique o valor digitado.", "Ele deve ser desse padrão: \nEx:1,75 ou 2.78");
                     }
@@ -147,7 +142,7 @@ public class FragLucro extends Fragment {
                         try {
                             double val1 = Double.parseDouble(a.replace(",", "."));
                             double val2 = Double.parseDouble(b.replace(",", "."));
-                            txtValorInvestidoConvertido.setText(String.valueOf(numeroFormatado(converterRealBtc(val1, val2))).replace(".", ","));
+                            txtValorInvestidoConvertido.setText(String.valueOf(Util.valorEmBtcFormatado(Util.converterRealBtc(val1, val2))).replace(".", ","));
                             spinner.setSelection(0);
                             txtValorCotacaoAtual.setText("");
                             txtValorEmReaisAtual.setText("");
@@ -177,11 +172,11 @@ public class FragLucro extends Fragment {
                             NumberFormat formato = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
                             double val1 = Double.parseDouble(a.replace(",", "."));
                             double val2 = Double.parseDouble(b.replace("R$", "").replace(".", "").replace(",", "."));
-                            txtValorEmReaisAtual.setText(formato.format(converterBtcReal(val1, val2)));
+                            txtValorEmReaisAtual.setText(Util.numeroformatadoEmReal.format(Util.converterBtcReal(val1, val2)));
 
                             double val3 = Double.parseDouble(txtValorInvestido.getText().toString().replace("R$", "").replace(".", "").replace(",", "."));
                             double val4 = Double.parseDouble(txtValorEmReaisAtual.getText().toString().replace("R$", "").replace(".", "").replace(",", "."));
-                            double total = calcularTotal(val4, val3);
+                            double total = Util.calcularTotal(val4, val3);
                             if (val3 > val4) {
                                 Log.d("DEBUG", "prejuizo: " + formato.format(total));
                                 txtResultadoLucro.setText("Seu Prejuízo é de:" + formato.format(total));
@@ -203,19 +198,19 @@ public class FragLucro extends Fragment {
                 int posicaoClicada = position;
                 switch (posicaoClicada){
                     case 1:
-                        volleyStringRequestWalltime(STRING_REQUEST_URL);
+                        volleyStringRequestWalltime(Util.STRING_WALLTIME);
                         break;
                     case 2:
-                        volleyStringRequestMercadoBitcoin(STRING_REQUEST_URL_MERCADO);
+                        volleyStringRequestMercadoBitcoin(Util.STRING_MERCADOBITCOIN);
                         break;
                     case 3:
-                        volleyStringRequestFoxbit(STRING_REQUEST_URL_FOXBIT);
+                        volleyStringRequestFoxbit(Util.STRING_BRAZILIEX);
                         break;
                     case 4:
-                        volleyStringRequstBitCoinToYou(STRING_REQUEST_URL_BITCOINTOYOU);
+                        volleyStringRequstBitCoinToYou(Util.STRING_BITCOINTOYOU);
                         break;
                     case 5:
-                        volleyStringRequestBitcoinTradeVenda(STRING_REQUEST_URL_BITCOINTRADE);
+                        volleyStringRequestBitcoinTradeVenda(Util.STRING_BITCOINTRADE);
                         break;
                     default:
                         txtValorCotacaoAtual.setText("");
@@ -243,9 +238,8 @@ public class FragLucro extends Fragment {
             @Override
             public void onResponse(String response) {
 
-                String teste = response;
-                NumberFormat formato = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
-                RetWalltime cotacao = JSONGsonObjeto(teste);
+                String json = response;
+                RetWalltime cotacao = Util.retornaObjetoWalltime(json);
                 String res = cotacao.getRetWalltime2().getBrl_xbt();
 
                 if (res.contains("/")) {
@@ -256,16 +250,16 @@ public class FragLucro extends Fragment {
                     double val2 = Double.parseDouble(v2);
                     if (explode[0] == null || explode[0].isEmpty()) {
                         double total = val1 / 1;
-                        txtValorCotacaoAtual.setText(formato.format(total));
+                        txtValorCotacaoAtual.setText(Util.numeroformatadoEmReal.format(total));
                     } else {
                         double total = val1 / val2;
-                        txtValorCotacaoAtual.setText(formato.format(total));
+                        txtValorCotacaoAtual.setText(Util.numeroformatadoEmReal.format(total));
 
                     }
                 } else {
                     double total = Double.parseDouble(res);
 
-                    txtValorCotacaoAtual.setText(formato.format(total));
+                    txtValorCotacaoAtual.setText(Util.numeroformatadoEmReal.format(total));
                 }
             }
         }, new Response.ErrorListener() {
@@ -284,18 +278,16 @@ public class FragLucro extends Fragment {
         StringRequest strReq = new StringRequest(url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                String teste = response;
+                String json = response;
 
                 try {
 
-                    JSONObject jo = new JSONObject(teste);
+                    JSONObject jo = new JSONObject(json);
                     JSONObject j = jo.getJSONObject("data");
 
                     double valor1 = Double.parseDouble(j.get("sell").toString());
 
-                    NumberFormat formato = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
-
-                    txtValorCotacaoAtual.setText(formato.format(valor1));
+                    txtValorCotacaoAtual.setText(Util.numeroformatadoEmReal.format(valor1));
 
 
                 } catch (JSONException e) {
@@ -320,11 +312,11 @@ public class FragLucro extends Fragment {
         StringRequest strReq = new StringRequest(url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                String teste = response;
-                m = retornaObjeto(teste);
+                String json = response;
+                m = Util.retornaObjetoMercadoBitcoin(json);
                 double valor = m.getSell();
-                NumberFormat formato = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
-                txtValorCotacaoAtual.setText(formato.format(valor));
+
+                txtValorCotacaoAtual.setText(Util.numeroformatadoEmReal.format(valor));
             }
         }, new Response.ErrorListener() {
             @Override
@@ -341,10 +333,10 @@ public class FragLucro extends Fragment {
         StringRequest strReq = new StringRequest(url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                String teste = response;
-                b = retornaObjetoBitCoinToYou(teste);
-                NumberFormat formato = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
-                txtValorCotacaoAtual.setText(formato.format(b.getSell()));
+                String json = response;
+                b = Util.retornaObjetoBitCoinToYou(json);
+
+                txtValorCotacaoAtual.setText(Util.numeroformatadoEmReal.format(b.getSell()));
             }
         }, new Response.ErrorListener() {
             @Override
@@ -362,20 +354,18 @@ public class FragLucro extends Fragment {
         StringRequest strReq = new StringRequest(url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                String teste = response;
+                String json = response;
 
                 try {
 
-                    JSONObject jo = new JSONObject(teste);
+                    JSONObject jo = new JSONObject(json);
                     JSONObject j = jo.getJSONObject("FOX");
                     //String a = j.get("bid").toString() + " - " + j.get("ask").toString();
                     double valor1 = Double.parseDouble(j.get("bid").toString());
                     double valor2 = Double.parseDouble(j.get("ask").toString());
                     double valor3 = Double.parseDouble(j.get("bid_vol").toString());
 
-                    NumberFormat formato = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
-
-                    txtValorCotacaoAtual.setText(formato.format(valor2));
+                    txtValorCotacaoAtual.setText(Util.numeroformatadoEmReal.format(valor2));
 
 
                 } catch (JSONException e) {
@@ -393,66 +383,6 @@ public class FragLucro extends Fragment {
         });
         // Adding String request to request queue
         AppSingleton.getInstance(getActivity().getApplicationContext()).addToRequestQueue(strReq, REQUEST_TAG);
-    }
-
-    public double converterRealBtc(double v1, double v2) {
-        return v1 / v2;
-    }
-
-    public double converterBtcReal(double v1, double v2) {
-        return v1 * v2;
-    }
-
-    public double calcularTotal(double v1, double v2){
-        return v1 - v2;
-    }
-
-    public static String numeroFormatado(double valor) {
-        DecimalFormat dc = new DecimalFormat("#,##0.0000000");
-        return dc.format(valor);
-    }
-
-    public static String numeroFormatadoReal(double valor) {
-        DecimalFormat dc = new DecimalFormat("#,##0.00");
-        return dc.format(valor);
-    }
-
-    public RetWalltime JSONGsonObjeto(String jsonString) {
-        Gson gson = new Gson();
-        RetWalltime cotacao = gson.fromJson(jsonString, RetWalltime.class);
-        return cotacao;
-    }
-
-    public MercadoBitCoin retornaObjeto(String js) {
-        m = new MercadoBitCoin();
-        try {
-            JSONObject json = new JSONObject(js);
-
-            JSONObject d = json.getJSONObject("ticker");
-            m.setBuy(Double.parseDouble(d.getString("buy")));
-            m.setSell(Double.parseDouble(d.getString("sell")));
-            m.setVol(Double.parseDouble(d.getString("vol")));
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        return m;
-    }
-
-
-    public BitcoinToYou retornaObjetoBitCoinToYou(String js) {
-        b = new BitcoinToYou();
-        double valor = 0;
-        try {
-            JSONObject json = new JSONObject(js);
-            JSONObject d = json.getJSONObject("ticker");
-            b.setBuy(Double.parseDouble(d.getString("buy")));
-            b.setSell(Double.parseDouble(d.getString("sell")));
-            b.setVol(Double.parseDouble(d.getString("vol")));
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        return b;
     }
 
     public void alerta(String titulo, String msg){

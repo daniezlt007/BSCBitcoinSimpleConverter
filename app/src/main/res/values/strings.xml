@@ -8,9 +8,10 @@
     <string name="action_about">Sobre</string>
     <string name="action_exit">Sair</string>
 
+    <string name="txtajudatitulo">Como utilizar o App BSConverter</string>
     <string name="txt_walltime">WALLTIME</string>
     <string name="txt_mercadobitcoin">M.BITCOIN</string>
-    <string name="txt_foxbit">FOXBIT</string>
+    <string name="txt_braziliex">BRAZILIEX</string>
     <string name="txt_bitcointoyou">BITCOINTOYOU</string>
     <string name="txt_bitcointrade">BITCOINTRADE</string>
     <string name="txt_negociecoins">NEGOCIECOINS</string>
@@ -25,5 +26,14 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="string_valor">R$0,00\nvol:0.00</string>
+    <string name="string_valor_venda">R$0,00</string>
+    <string name="about_app">Como utilizar o APP</string>
+    <string name="txtajudaconteudo">"\n"
+                "    • Para atualizar os valores de compra e venda na tela inicial, é necessário arrastar a tela de cima para baixo, que fará a consulta nas exchanges cadastradas.\n"
+                "      \n"
+                "    •  Para consultas, basta clicar nos botões da exchange, que abrirá a tela e mostrarará os campos para preenchimento. Valor para compra em reais, e valor para venda em bitcoins. \n"
+                "\n"
+                "    • O aplicativo possui também uma calculadora de lucro, onde também pode ser informado o valor pago em reais e a cotação atual da exchange escolhida. E também uma calculadora para cálculos em aberto, onde é possível preencher com o valor que desejar tanto em reais como em bitcoins."</string>
 
 </resources>

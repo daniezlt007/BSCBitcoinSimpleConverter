@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backFragment"
+    android:orientation="vertical"
+    tools:context=".fragmento.FragAjuda">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/txtAjudaTitulo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="45dp"
+                android:text="@string/txtajudatitulo"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtAjuda"
+            android:layout_width="335dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="81dp"
+            android:ems="10"
+            android:fontFamily="serif"
+            android:inputType="textMultiLine"
+            android:text="@string/txtajudaconteudo"
+            android:textAlignment="textStart"
+            android:textColor="@android:color/background_dark"
+            android:textSize="14sp" />
+
+
+        <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/adView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="bottom"
+            android:layout_marginLeft="35dp"
+            ads:adSize="BANNER"
+            ads:adUnitId="@string/codigoAdmob"></com.google.android.gms.ads.AdView>
+
+    </RelativeLayout>
+
+</FrameLayout>

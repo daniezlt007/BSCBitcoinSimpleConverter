@@ -16,6 +16,7 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.deasystem.daniel.bitcoinsimpleconverter.R;
+import com.deasystem.daniel.bitcoinsimpleconverter.common.Util;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
@@ -64,13 +65,6 @@ public class FragCalculadora extends Fragment {
         radioButtonBtcReal = view.findViewById(R.id.bitcoinRealCalc);
         radioGroup = view.findViewById(R.id.radioGroupCalc);
 
-        txtValor1 = view.findViewById(R.id.txtValor1Calc);
-        txtValor2 = view.findViewById(R.id.txtValor2Calc);
-        txtResultado = view.findViewById(R.id.txtResultadoCalc);
-        radioButtonRealBtc = view.findViewById(R.id.realBitCoinCalc);
-        radioButtonBtcReal = view.findViewById(R.id.bitcoinRealCalc);
-        radioGroup = view.findViewById(R.id.radioGroupCalc);
-
         txtValor2.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -100,7 +94,7 @@ public class FragCalculadora extends Fragment {
                             } else {
                                 double val1 = Double.parseDouble(txtValor1.getText().toString().replace(",", "."));
                                 double val2 = Double.parseDouble(txtValor2.getText().toString().replace("R$", "").replace(".", "").replace(",", "."));
-                                txtResultado.setText("BTC " + String.valueOf(numeroFormatado(converterRealBtc(val1, val2))).replace(".", ","));
+                                txtResultado.setText("BTC " + String.valueOf(Util.valorEmBtcFormatado(Util.converterRealBtc(val1, val2))).replace(".", ","));
                             }
                         }
 
@@ -112,7 +106,7 @@ public class FragCalculadora extends Fragment {
                                 NumberFormat formato = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
                                 double val1 = Double.parseDouble(txtValor1.getText().toString().replace(",", "."));
                                 double val2 = Double.parseDouble(txtValor2.getText().toString().replace("R$", "").replace(".", "").replace(",", "."));
-                                txtResultado.setText(formato.format(converterBtcReal(val1, val2)));
+                                txtResultado.setText(Util.numeroformatadoEmReal.format(Util.converterBtcReal(val1, val2)));
                             }
                         }
 
@@ -144,31 +138,12 @@ public class FragCalculadora extends Fragment {
         return view;
     }
 
-
-    public double converterRealBtc(double v1, double v2){
-        return v1 / v2;
-    }
-
-    public double converterBtcReal(double v1, double v2){
-        return v1 * v2;
-    }
-
     public void limparCampos(){
         txtValor1.setEnabled(true);
         txtValor2.setEnabled(true);
         txtValor1.setText("");
         txtValor2.setText("");
         txtResultado.setText("");
-    }
-
-    public static String numeroFormatado(double valor) {
-        DecimalFormat dc = new DecimalFormat("#,##0.0000000");
-        return dc.format(valor);
-    }
-
-    public static String numeroFormatadoReal(double valor) {
-        DecimalFormat dc = new DecimalFormat("#,##0.00");
-        return dc.format(valor);
     }
 
     public void Alerta(){

@@ -1,6 +1,5 @@
 package com.deasystem.daniel.bitcoinsimpleconverter;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -14,17 +13,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.deasystem.daniel.bitcoinsimpleconverter.fragmento.FragBitcoinToYou;
-import com.deasystem.daniel.bitcoinsimpleconverter.fragmento.FragBitcoinTrade;
+import com.deasystem.daniel.bitcoinsimpleconverter.fragmento.FragAjuda;
 import com.deasystem.daniel.bitcoinsimpleconverter.fragmento.FragCalculadora;
-import com.deasystem.daniel.bitcoinsimpleconverter.fragmento.FragFoxbit;
 
 import com.deasystem.daniel.bitcoinsimpleconverter.fragmento.FragBitcoin;
 import com.deasystem.daniel.bitcoinsimpleconverter.fragmento.FragBlockChain;
 import com.deasystem.daniel.bitcoinsimpleconverter.fragmento.FragLucro;
-import com.deasystem.daniel.bitcoinsimpleconverter.fragmento.FragMercadoBitCoin;
 import com.deasystem.daniel.bitcoinsimpleconverter.fragmento.FragWallet;
-import com.deasystem.daniel.bitcoinsimpleconverter.fragmento.FragWalltime;
 
 public class ActivityPrincipal extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -83,10 +78,15 @@ public class ActivityPrincipal extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            Intent intent = new Intent(ActivityPrincipal.this, ActivityPrincipal.class);
-            startActivity(intent);
-            finish();
-            return true;
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.frame_layout, new FragMain()).commit();
+        }
+
+        if(id == R.id.action_about){
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.frame_layout, new FragAjuda()).commit();
         }
 
         if(id == R.id.action_exit){
