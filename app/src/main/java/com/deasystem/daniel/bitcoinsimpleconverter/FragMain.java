@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -66,10 +67,10 @@ public class FragMain extends Fragment {
         View view = inflater.inflate(R.layout.fragment_main, container, false);
 
         //Anúncio
-        MobileAds.initialize(this.getActivity().getApplicationContext(), "ca-app-pub-1974086740128373~6640975025");
+        MobileAds.initialize(this.getActivity().getApplicationContext(), Util.idSdk);
         AdView adView = new AdView(this.getActivity().getApplicationContext());
         adView.setAdSize(AdSize.BANNER);
-        adView.setAdUnitId("ca-app-pub-3940256099942544/6300978111");
+        adView.setAdUnitId(Util.idBanner);
 
         mAdView = view.findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
@@ -170,6 +171,7 @@ public class FragMain extends Fragment {
         RequestBrasiliex(Util.STRING_BRAZILIEX);
         RequestBitcoinTrade(Util.STRING_BITCOINTRADE);
         RequestNegocieCoins(Util.STRING_NEGOCIECOINS);
+        Request3xBit(Util.STRING_3XBIT);
     }
 
     public void RequestBrasiliex(String url) {
@@ -386,6 +388,45 @@ public class FragMain extends Fragment {
                     double vol = Double.parseDouble(jo.get("vol").toString());
                     txt_vl_compra_negociecoins.setText(Util.numeroformatadoEmReal.format(valorCompra) + "\nvol:" + Util.numeroFormatadoEmValorReal(vol));
                     txt_vl_venda_negociecoins.setText(Util.numeroformatadoEmReal.format(valorVenda));
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                // Toast.makeText(getApplicationContext(), "MSG:" , Toast.LENGTH_LONG).show();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                swipe.setRefreshing(false);
+            }
+        });
+        // Adding String request to request queue
+        AppSingleton.getInstance(getActivity().getApplicationContext()).addToRequestQueue(strReq, REQUEST_TAG);
+    }
+
+
+    public void Request3xBit(String url) {
+        String REQUEST_TAG = "com.androidtutorialpoint.volleyStringRequest";
+
+        StringRequest strReq = new StringRequest(url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                String json = response;
+
+                try {
+
+                    JSONObject jo = new JSONObject(json);
+                    JSONObject j = jo.getJSONObject("CREDIT_BTC");
+
+                    double valorCompra = Double.parseDouble(j.get("bid").toString());
+                    double valorVenda = Double.parseDouble(j.get("ask").toString());
+                    double volume = Double.parseDouble(j.get("volume").toString());
+
+                    String retorno = Util.numeroformatadoEmReal.format(valorCompra) + "\nvol:" + Util.numeroFormatadoEmValorReal(volume) + "\n";
+                    retorno += Util.numeroformatadoEmReal.format(valorVenda);
+
+                    Log.d("3XBIT", "Retorno: " + retorno);
 
                 } catch (JSONException e) {
                     e.printStackTrace();

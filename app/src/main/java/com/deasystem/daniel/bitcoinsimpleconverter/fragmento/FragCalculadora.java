@@ -49,10 +49,10 @@ public class FragCalculadora extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.frag_calculadora, container, false);
 
-        MobileAds.initialize(this.getActivity().getApplicationContext(), "ca-app-pub-1974086740128373~6640975025");
+        MobileAds.initialize(this.getActivity().getApplicationContext(), Util.idSdk);
         AdView adView = new AdView(this.getActivity().getApplicationContext());
         adView.setAdSize(AdSize.BANNER);
-        adView.setAdUnitId("ca-app-pub-3940256099942544/6300978111");
+        adView.setAdUnitId(Util.idBanner);
 
         mAdView = view.findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();

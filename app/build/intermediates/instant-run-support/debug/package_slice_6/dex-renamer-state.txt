@@ -1,0 +1,4 @@
+#Fri Dec 28 22:10:02 BRT 2018
+base.0=/home/daniel/AndroidStudioProjects/BSCBitcoinSimpleConverter/app/build/intermediates/transforms/dexMerger/debug/26
+path.0=classes.dex
+renamed.0=classes.dex

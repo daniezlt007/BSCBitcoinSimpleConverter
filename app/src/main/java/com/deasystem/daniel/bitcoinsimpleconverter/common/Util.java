@@ -22,6 +22,10 @@ public class Util {
     public static final String STRING_NEGOCIECOINS  = "https://broker.negociecoins.com.br/api/v3/btcbrl/ticker";
 
     public static final String STRING_BRAZILIEX = "https://braziliex.com/api/v1/public/ticker/btc_brl";
+    public static final String STRING_3XBIT = "https://api.exchange.3xbit.com.br/ticker/brl";
+
+    public static final String idBanner = "ca-app-pub-1974086740128373/9663553135";
+    public static final String idSdk = "ca-app-pub-1974086740128373~6640975025";
 
     public static final NumberFormat numeroformatadoEmReal = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
 

@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.deasystem.daniel.bitcoinsimpleconverter.R;
+import com.deasystem.daniel.bitcoinsimpleconverter.common.Util;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
@@ -29,10 +30,10 @@ public class FragBitcoin extends Fragment {
         txtBitcoin = view.findViewById(R.id.txtBitcoin);
         txtBitcoin.setText("Bitcoin (símbolo: Ƀ; abrev: BTC ou XBT , peer-to-peer electronic cash system) é uma moeda digital do tipo criptomoeda descentralizada, e também um sistema econômico alternativo, apresentada em 2008 na lista de discussão The Cryptography Mailing por um programador, ou um grupo de programadores, de pseudônimo Satoshi Nakamoto. É considerada a primeira moeda digital mundial descentralizada, e tida como responsável pelo ressurgimento do sistema bancário livre. O bitcoin permite a transação financeira sem intermediários, mas verificadas por todos os nós da rede Bitcoin peer-to-peer, que são gravadas em um banco de dados distribuídos, chamado de blockchain.");
 
-        MobileAds.initialize(this.getActivity().getApplicationContext(), "ca-app-pub-1974086740128373~6640975025");
+        MobileAds.initialize(this.getActivity().getApplicationContext(), Util.idSdk);
         AdView adView = new AdView(this.getActivity().getApplicationContext());
         adView.setAdSize(AdSize.BANNER);
-        adView.setAdUnitId("ca-app-pub-3940256099942544/6300978111");
+        adView.setAdUnitId(Util.idBanner);
 
         mAdView = view.findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();

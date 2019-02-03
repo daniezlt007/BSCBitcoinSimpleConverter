@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="7dp"
+    card_view:cardCornerRadius="4dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp">
+
+        <Button
+            android:id="@+id/btn_walltime"
+            android:layout_width="100dp"
+            android:layout_height="43dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginBottom="22dp"
+            android:layout_marginEnd="15dp"
+            android:background="@drawable/botoes"
+            android:text="@string/txt_walltime"
+            android:textColor="@android:color/background_light"
+            android:textSize="11sp" />
+
+        <TextView
+            android:id="@+id/txt_vl_compra_walltime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="103dp"
+            android:layout_marginTop="36dp"
+            android:text="@string/string_valor"
+            android:textColor="@color/colorCompra"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/txt_vl_venda_walltime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/txt_vl_compra_walltime"
+            android:layout_centerVertical="true"
+            android:text="@string/string_valor_venda"
+            android:textColor="@color/colorVenda"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/txt_vl_compra_walltime"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="13dp"
+            android:text="@string/txt_compra"
+            android:textColor="@color/colorCompra"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/textView2"
+            android:layout_centerVertical="true"
+            android:text="@string/txt_venda"
+            android:textColor="@color/colorVenda"
+            android:textSize="16sp" />
+
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>
