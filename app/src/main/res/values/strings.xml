@@ -15,6 +15,7 @@
     <string name="txt_bitcointoyou">BITCOINTOYOU</string>
     <string name="txt_bitcointrade">BITCOINTRADE</string>
     <string name="txt_negociecoins">NEGOCIECOINS</string>
+    <string name="txt_broker">TEMBTC</string>
 
     <string name="txt_exchange">EXCHANGE</string>
     <string name="txt_compra">COMPRA</string>
@@ -23,6 +24,7 @@
     <string name="btn_consultar">ATUALIZAR</string>
 
     <string name="codigoAdmob">ca-app-pub-1974086740128373/9663553135</string>
+    <string name="codigoIdApk">ca-app-pub-1974086740128373~6640975025</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -35,5 +37,64 @@
                 "    •  Para consultas, basta clicar nos botões da exchange, que abrirá a tela e mostrarará os campos para preenchimento. Valor para compra em reais, e valor para venda em bitcoins. \n"
                 "\n"
                 "    • O aplicativo possui também uma calculadora de lucro, onde também pode ser informado o valor pago em reais e a cotação atual da exchange escolhida. E também uma calculadora para cálculos em aberto, onde é possível preencher com o valor que desejar tanto em reais como em bitcoins."</string>
+    <string name="politica_privacidade">Políticas de privacidade</string>
+    <string name="txtpoliticas">"\n"Daniel da Silva construiu o aplicativo BSC - Bitcoin Simple Convert como um aplicativo gratuito. Este SERVIÇO é fornecido por Daniel da Silva sem nenhum custo e é destinado para uso como é.
+
+Esta página é usada para informar os visitantes sobre minhas políticas com a coleta, uso e divulgação de Informações Pessoais, caso alguém decida usar o meu Serviço.
+
+Se você optar por usar o meu Serviço, você concorda com a coleta e uso de informações em relação a esta política. As Informações Pessoais que eu coleciono são usadas para fornecer e melhorar o Serviço. Não usarei nem compartilharei suas informações com ninguém, exceto conforme descrito nesta Política de Privacidade.
+
+Os termos usados ​​nesta Política de Privacidade têm os mesmos significados que os nossos Termos e Condições, que podem ser acessados ​​no BSC - Bitcoin Simple Convert, a menos que definido de outra forma nesta Política de Privacidade.
+
+"- Coleta e Uso de Informações\n"
+
+Para uma melhor experiência, ao usar nosso Serviço, eu posso exigir que você nos forneça certas informações pessoalmente identificáveis, incluindo, mas não limitado a, acesso à Internet. As informações que eu solicito serão retidas no seu dispositivo e não serão coletadas por mim de nenhuma maneira.
+
+O aplicativo usa serviços de terceiros que podem coletar informações usadas para identificá-lo.
+
+Link para a política de privacidade de provedores de serviços de terceiros usados ​​pelo aplicativo
+"\n"
+- Dados de Log
+"\n"
+Quero informá-lo que sempre que você usar o meu serviço, no caso de um erro no aplicativo eu coletar dados e informações (através de produtos de terceiros) em seu telefone chamado Log Data. Esses dados de registro podem incluir informações como o endereço IP do dispositivo, o nome do dispositivo, a versão do sistema operacional, a configuração do aplicativo ao utilizar meu serviço, a hora e a data do seu uso do serviço e outras estatísticas.
+"\n"
+- Cookies
+"\n"
+Cookies são arquivos com uma pequena quantidade de dados que são comumente usados ​​como identificadores exclusivos anônimos. Estes são enviados para o seu navegador a partir dos sites que você visita e são armazenados na memória interna do seu dispositivo.
+
+Este serviço não usa esses “cookies” explicitamente. No entanto, o aplicativo pode usar código de terceiros e bibliotecas que usam “cookies” para coletar informações e melhorar seus serviços. Você tem a opção de aceitar ou recusar esses cookies e saber quando um cookie está sendo enviado para o seu dispositivo. Se você optar por recusar nossos cookies, talvez não consiga usar algumas partes deste Serviço.
+"\n"
+- Provedores de serviço
+"\n"
+Eu posso empregar empresas e indivíduos de terceiros devido às seguintes razões:
+"\n"
+    - Para facilitar nosso serviço;"\n"
+    - Para fornecer o serviço em nosso nome;"\n"
+    - Para executar serviços relacionados a serviços; ou"\n"
+    - Para nos ajudar a analisar como nosso Serviço é usado."\n"
+
+Quero informar aos usuários deste Serviço que esses terceiros têm acesso às suas informações pessoais. O motivo é executar as tarefas atribuídas a eles em nosso nome. No entanto, eles são obrigados a não divulgar ou usar as informações para qualquer outra finalidade.
+"\n"
+Segurança
+"\n"
+Eu valorizo ​​a sua confiança em nos fornecer suas informações pessoais, por isso estamos nos esforçando para usar meios comercialmente aceitáveis ​​de protegê-los. Mas lembre-se de que nenhum método de transmissão pela internet ou método de armazenamento eletrônico é 100% seguro e confiável, e não posso garantir sua segurança absoluta.
+"\n"
+- Links para outros sites
+"\n"
+Este Serviço pode conter links para outros sites. Se você clicar em um link de terceiros, você será direcionado para esse site. Observe que esses sites externos não são operados por mim. Por isso, recomendo vivamente que reveja a Política de Privacidade destes sites. Não tenho controle e não me responsabilizo pelo conteúdo, políticas de privacidade ou práticas de sites ou serviços de terceiros.
+"\n"
+- Privacidade infantil
+"\n"
+Estes Serviços não abordam ninguém com idade inferior a 13 anos. Não recolho intencionalmente informações pessoalmente identificáveis ​​de crianças com menos de 13 anos. No caso de descobrir que uma criança com menos de 13 anos me forneceu informações pessoais, excluo imediatamente os nossos servidores. Se você é pai / mãe ou responsável legal e sabe que seu filho nos forneceu informações pessoais, entre em contato comigo para que eu possa tomar as providências necessárias.
+
+- Alterações a esta política de privacidade
+
+Eu posso atualizar nossa Política de Privacidade de tempos em tempos. Assim, aconselhamos que você revise esta página periodicamente para quaisquer alterações. Vou notificá-lo de quaisquer alterações publicando a nova Política de Privacidade nesta página. Essas alterações são efetivadas imediatamente após serem publicadas nesta página.
+"\n"
+- Contate-Nos
+"\n"
+Se você tiver dúvidas ou sugestões sobre minha Política de Privacidade, não hesite em entrar em contato comigo.
+
+Esta página da política de privacidade foi criada em privacypolicytemplate.net e modificada / gerada pelo App Privacy Policy Generator</string>
 
 </resources>

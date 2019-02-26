@@ -20,6 +20,7 @@ import com.deasystem.daniel.bitcoinsimpleconverter.common.Util;
 import com.deasystem.daniel.bitcoinsimpleconverter.fragmento.FragBitcoinToYou;
 import com.deasystem.daniel.bitcoinsimpleconverter.fragmento.FragBitcoinTrade;
 import com.deasystem.daniel.bitcoinsimpleconverter.fragmento.FragBraziliex;
+import com.deasystem.daniel.bitcoinsimpleconverter.fragmento.FragBroker;
 import com.deasystem.daniel.bitcoinsimpleconverter.fragmento.FragMercadoBitCoin;
 import com.deasystem.daniel.bitcoinsimpleconverter.fragmento.FragNegocieCoin;
 import com.deasystem.daniel.bitcoinsimpleconverter.fragmento.FragWalltime;
@@ -49,11 +50,11 @@ public class FragMain extends Fragment {
     private BitcoinToYou bitcoinToYOu;
     private Button btn_walltime,
             btn_mercado, btn_braziliex,
-            btn_bitcointoyou, btn_bitcointrade, btn_negociecoin;
+            btn_bitcointoyou, btn_bitcointrade, btn_negociecoin, btn_broker;
     private TextView txt_vl_compra_walltime, txt_vl_venda_walltime, txt_vl_compra_mercado_bitcoin,
             txt_vl_venda_mercado_bitcoin, txt_vl_compra_bitcointoyou, txt_vl_venda_bitcointoyou,
             txt_vl_compra_braziliex, txt_vl_venda_braziliex, txt_vl_compra_bitcointrade, txt_vl_venda_bitcointrade,
-            txt_vl_compra_negociecoins, txt_vl_venda_negociecoins;
+            txt_vl_compra_negociecoins, txt_vl_venda_negociecoins,txt_vl_compra_broker, txt_vl_venda_broker;
 
     public FragMain() {
         // Required empty public constructor
@@ -99,6 +100,9 @@ public class FragMain extends Fragment {
         txt_vl_venda_bitcointrade = view.findViewById(R.id.txt_vl_venda_bitcointrade);
         txt_vl_compra_negociecoins = view.findViewById(R.id.txt_vl_compra_negociecoins);
         txt_vl_venda_negociecoins = view.findViewById(R.id.txt_vl_venda_negociecoins);
+
+        txt_vl_compra_broker = view.findViewById(R.id.txt_vl_compra_broker);
+        txt_vl_venda_broker = view.findViewById(R.id.txt_vl_venda_broker);
 
         btn_walltime = view.findViewById(R.id.btn_walltime);
         btn_walltime.setOnClickListener(new View.OnClickListener() {
@@ -160,6 +164,16 @@ public class FragMain extends Fragment {
             }
         });
 
+        btn_broker = view.findViewById(R.id.btn_broker);
+        btn_broker.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.frame_layout, new FragBroker()).commit();
+            }
+        });
+
         return view;
     }
 
@@ -172,6 +186,7 @@ public class FragMain extends Fragment {
         RequestBitcoinTrade(Util.STRING_BITCOINTRADE);
         RequestNegocieCoins(Util.STRING_NEGOCIECOINS);
         Request3xBit(Util.STRING_3XBIT);
+        RequestBroker(Util.STRING_BROKER);
     }
 
     public void RequestBrasiliex(String url) {
@@ -388,6 +403,40 @@ public class FragMain extends Fragment {
                     double vol = Double.parseDouble(jo.get("vol").toString());
                     txt_vl_compra_negociecoins.setText(Util.numeroformatadoEmReal.format(valorCompra) + "\nvol:" + Util.numeroFormatadoEmValorReal(vol));
                     txt_vl_venda_negociecoins.setText(Util.numeroformatadoEmReal.format(valorVenda));
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                // Toast.makeText(getApplicationContext(), "MSG:" , Toast.LENGTH_LONG).show();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                swipe.setRefreshing(false);
+            }
+        });
+        // Adding String request to request queue
+        AppSingleton.getInstance(getActivity().getApplicationContext()).addToRequestQueue(strReq, REQUEST_TAG);
+    }
+
+    public void RequestBroker(String url){
+        String  REQUEST_TAG = "com.androidtutorialpoint.volleyStringRequest";
+
+        StringRequest strReq = new StringRequest(url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                String teste = response;
+
+                try {
+
+                    JSONObject jo = new JSONObject(teste);
+                    double valorCompra = Double.parseDouble(jo.get("buy").toString());
+                    double valorVenda = Double.parseDouble(jo.get("sell").toString());
+
+                    double vol = Double.parseDouble(jo.get("vol").toString());
+                    txt_vl_compra_broker.setText(Util.numeroformatadoEmReal.format(valorCompra) + "\nvol:" + Util.numeroFormatadoEmValorReal(vol));
+                    txt_vl_venda_broker.setText(Util.numeroformatadoEmReal.format(valorVenda));
 
                 } catch (JSONException e) {
                     e.printStackTrace();

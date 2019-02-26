@@ -19,6 +19,7 @@ import com.deasystem.daniel.bitcoinsimpleconverter.fragmento.FragCalculadora;
 import com.deasystem.daniel.bitcoinsimpleconverter.fragmento.FragBitcoin;
 import com.deasystem.daniel.bitcoinsimpleconverter.fragmento.FragBlockChain;
 import com.deasystem.daniel.bitcoinsimpleconverter.fragmento.FragLucro;
+import com.deasystem.daniel.bitcoinsimpleconverter.fragmento.FragPrivacity;
 import com.deasystem.daniel.bitcoinsimpleconverter.fragmento.FragWallet;
 
 public class ActivityPrincipal extends AppCompatActivity
@@ -87,6 +88,12 @@ public class ActivityPrincipal extends AppCompatActivity
             getSupportFragmentManager()
                     .beginTransaction()
                     .replace(R.id.frame_layout, new FragAjuda()).commit();
+        }
+
+        if(id == R.id.politicy_public){
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.frame_layout, new FragPrivacity()).commit();
         }
 
         if(id == R.id.action_exit){

@@ -22,4 +22,5 @@
     <dimen name="txt_valor_frag_main">18sp</dimen>
     <dimen name="txt_valor_exc_compra">140sp</dimen>
     <dimen name="txt_valor_exc_venda">245sp</dimen>
+    <dimen name="text_margin">16dp</dimen>
 </resources>

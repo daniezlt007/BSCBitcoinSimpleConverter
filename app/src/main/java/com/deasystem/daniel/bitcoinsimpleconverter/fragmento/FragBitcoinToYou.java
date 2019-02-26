@@ -32,6 +32,9 @@ import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -181,6 +184,16 @@ public class FragBitcoinToYou extends Fragment {
             @Override
             public void onResponse(String response) {
                 String json = response;
+
+                try {
+                    JSONObject jsonObject = new JSONObject(json);
+                    JSONObject js = jsonObject.getJSONObject("ticker");
+                    Log.d("BitcoinToYou","JSONOBJECT: " + js.get("buy"));
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                Log.d("BitcoinToYou","Response: " + json);
                 BitcoinToYou bitcoinToYou = Util.retornaObjetoBitCoinToYou(json);
 
                 double valorCompra = bitcoinToYou.getBuy();

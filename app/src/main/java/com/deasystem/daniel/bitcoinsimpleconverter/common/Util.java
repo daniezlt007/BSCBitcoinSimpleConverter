@@ -15,14 +15,15 @@ import java.util.Locale;
 
 public class Util {
 
+    public static final String STRING_WALLTIME = "https://s3.amazonaws.com/data-production-walltime-info/production/dynamic/meta.json";
+
     public static final String STRING_BITCOINTOYOU = "https://www.bitcointoyou.com/api/ticker.aspx";
     public static final String STRING_MERCADOBITCOIN = "https://www.mercadobitcoin.net/api/btc/ticker/";
-    public static final String STRING_WALLTIME = "https://s3.amazonaws.com/data-production-walltime-info/production/dynamic/meta.json";
-    public static final String STRING_BITCOINTRADE = "https://api.bitcointrade.com.br/v1/public/BTC/ticker";
+    public static final String STRING_BITCOINTRADE = "https://api.bitcointrade.com.br/v2/public/BRLBTC/ticker";
     public static final String STRING_NEGOCIECOINS  = "https://broker.negociecoins.com.br/api/v3/btcbrl/ticker";
-
     public static final String STRING_BRAZILIEX = "https://braziliex.com/api/v1/public/ticker/btc_brl";
     public static final String STRING_3XBIT = "https://api.exchange.3xbit.com.br/ticker/brl";
+    public static final String STRING_BROKER = "https://broker.tembtc.com.br/api/v3/btcbrl/ticker";
 
     public static final String idBanner = "ca-app-pub-1974086740128373/9663553135";
     public static final String idSdk = "ca-app-pub-1974086740128373~6640975025";
