@@ -4,7 +4,7 @@
             "outputFile": "/home/daniel/AndroidStudioProjects/BSCBitcoinSimpleConverter/app/build/intermediates/incremental/mergeReleaseResources/merged.dir/values-v26/values-v26.xml",
             "map": [
                 {
-                    "source": "/home/daniel/.gradle/caches/transforms-1/files-1.1/design-27.1.1.aar/6be37770ffac1d02fb1fc39e90534feb/res/values-v26/values-v26.xml",
+                    "source": "/home/daniel/.gradle/caches/transforms-1/files-1.1/design-27.1.1.aar/c492e4a2a7b75f2229d374125f77c0d8/res/values-v26/values-v26.xml",
                     "from": {
                         "startLines": "2,6",
                         "startColumns": "4,4",
@@ -23,7 +23,7 @@
                     }
                 },
                 {
-                    "source": "/home/daniel/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/d6900ea7c3ab69414b870f8126ebcd0b/res/values-v26/values-v26.xml",
+                    "source": "/home/daniel/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/e4ecc2976f763f845a0163ebcdb49b50/res/values-v26/values-v26.xml",
                     "from": {
                         "startLines": "2,3,4,8,12,16",
                         "startColumns": "4,4,4,4,4,4",

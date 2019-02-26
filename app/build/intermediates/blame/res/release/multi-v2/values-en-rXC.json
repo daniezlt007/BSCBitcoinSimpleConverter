@@ -4,7 +4,7 @@
             "outputFile": "/home/daniel/AndroidStudioProjects/BSCBitcoinSimpleConverter/app/build/intermediates/incremental/mergeReleaseResources/merged.dir/values-en-rXC/values-en-rXC.xml",
             "map": [
                 {
-                    "source": "/home/daniel/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/d6900ea7c3ab69414b870f8126ebcd0b/res/values-en-rXC/values-en-rXC.xml",
+                    "source": "/home/daniel/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/e4ecc2976f763f845a0163ebcdb49b50/res/values-en-rXC/values-en-rXC.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",

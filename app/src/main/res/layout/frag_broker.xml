@@ -83,18 +83,7 @@
         android:textAlignment="center"
         android:textColor="@android:color/background_dark" />
 
-    <!--<Button
-        android:id="@+id/btnCalcular"
-        style="@style/button_style"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/txtResultado"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="54dp"
-        android:background="@drawable/botoes"
-        android:text="Converter"
-        android:textColor="@android:color/background_light" />-->
-    <!--<com.google.android.gms.ads.AdView
+    <com.google.android.gms.ads.AdView
         xmlns:ads="http://schemas.android.com/apk/res-auto"
         android:id="@+id/adView"
         android:layout_width="wrap_content"
@@ -105,9 +94,7 @@
         ads:adSize="BANNER"
         android:layout_gravity="bottom"
         ads:adUnitId="@string/codigoAdmob">
-    </com.google.android.gms.ads.AdView>-->
-
-    <include layout="@layout/anuncio"/>
+    </com.google.android.gms.ads.AdView>
 
     <TextView
         android:id="@+id/txtViewTaxa"

@@ -4,7 +4,7 @@
             "outputFile": "/home/daniel/AndroidStudioProjects/BSCBitcoinSimpleConverter/app/build/intermediates/incremental/mergeReleaseResources/merged.dir/values-watch-v20/values-watch-v20.xml",
             "map": [
                 {
-                    "source": "/home/daniel/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/d6900ea7c3ab69414b870f8126ebcd0b/res/values-watch-v20/values-watch-v20.xml",
+                    "source": "/home/daniel/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/e4ecc2976f763f845a0163ebcdb49b50/res/values-watch-v20/values-watch-v20.xml",
                     "from": {
                         "startLines": "2,5,8",
                         "startColumns": "4,4,4",

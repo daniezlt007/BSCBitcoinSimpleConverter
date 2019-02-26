@@ -1,0 +1,4 @@
+#Tue Feb 26 13:02:17 BRT 2019
+base.0=/home/daniel/AndroidStudioProjects/BSCBitcoinSimpleConverter/app/build/intermediates/dex/release/mergeDexRelease/out
+path.0=classes.dex
+renamed.0=classes.dex
