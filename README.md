@@ -6,6 +6,16 @@
 - Breve informação sobre o que é Wallet.
 - Cotação de algumas Exchanges (Compra e Venda)
 - Calculadora Conversora dos valores
+##### Atualização 1.10
+- Melhorada a forma de consulta as API's.
+- Inserido novas Exchanges:
+- Walltime,
+- M.Bitcoin,
+- Braziliex,
+- Bitcointoyou,
+- BitcoinTrade,
+- NegocieCoins,
+- TemBtc
 
 ### Bibliotecas Utilizadas
 
