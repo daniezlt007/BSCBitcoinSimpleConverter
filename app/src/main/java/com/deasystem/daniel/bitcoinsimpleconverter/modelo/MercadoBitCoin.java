@@ -5,7 +5,7 @@ package com.deasystem.daniel.bitcoinsimpleconverter.modelo;
  */
 
 public class MercadoBitCoin {
-//{"ticker": { "high": "18847.00000000", "low": "18050.00000000", "vol": "155.35057408", "last": "18501.04002000", "buy": "18503.00000000", "sell": "18648.99999000", "date": 1508708385}}
+
     private double high;
     private double low;
     private double vol;

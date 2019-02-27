@@ -881,7 +881,6 @@ id btn_negociecoin
 id btn_walltime
 id buttonPanel
 id cancel_action
-id cardView
 id center
 id center_horizontal
 id center_vertical
@@ -1021,8 +1020,6 @@ id text2
 id textSpacerNoButtons
 id textSpacerNoTitle
 id textView
-id textView2
-id textView3
 id textView38
 id textView39
 id textView40
@@ -1171,7 +1168,6 @@ layout notification_template_media
 layout notification_template_media_custom
 layout notification_template_part_chronometer
 layout notification_template_part_time
-layout row_teste
 layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material

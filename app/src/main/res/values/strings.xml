@@ -23,8 +23,13 @@
 
     <string name="btn_consultar">ATUALIZAR</string>
 
-    <string name="codigoAdmob">ca-app-pub-1974086740128373/9663553135</string>
+
+    <string name="codigoAdmob">ca-app-pub-1974086740128373/4545585560</string>
     <string name="codigoIdApk">ca-app-pub-1974086740128373~6640975025</string>
+
+
+    <!--<string name="codigoAdmob">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="codigoIdApk">ca-app-pub-3940256099942544~3347511713</string>-->
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

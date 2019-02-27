@@ -756,10 +756,6 @@
         "source": "/home/daniel/.gradle/caches/transforms-1/files-1.1/design-27.1.1.aar/c492e4a2a7b75f2229d374125f77c0d8/res/layout/design_navigation_item_subheader.xml"
     },
     {
-        "merged": "/home/daniel/AndroidStudioProjects/BSCBitcoinSimpleConverter/app/build/intermediates/res/merged/release/layout_row_teste.xml.flat",
-        "source": "/home/daniel/AndroidStudioProjects/BSCBitcoinSimpleConverter/app/src/main/res/layout/row_teste.xml"
-    },
-    {
         "merged": "/home/daniel/AndroidStudioProjects/BSCBitcoinSimpleConverter/app/build/intermediates/res/merged/release/layout_design_layout_snackbar.xml.flat",
         "source": "/home/daniel/.gradle/caches/transforms-1/files-1.1/design-27.1.1.aar/c492e4a2a7b75f2229d374125f77c0d8/res/layout/design_layout_snackbar.xml"
     },

@@ -1120,10 +1120,6 @@
         "source": "/home/daniel/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/d3a0259250b047687b334e63b8b5bba0/res/layout/notification_template_part_chronometer.xml"
     },
     {
-        "merged": "/home/daniel/AndroidStudioProjects/BSCBitcoinSimpleConverter/app/build/intermediates/res/merged/debug/layout_row_teste.xml.flat",
-        "source": "/home/daniel/AndroidStudioProjects/BSCBitcoinSimpleConverter/app/src/main/res/layout/row_teste.xml"
-    },
-    {
         "merged": "/home/daniel/AndroidStudioProjects/BSCBitcoinSimpleConverter/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4_abc_btn_radio_to_on_mtrl_015.png.flat",
         "source": "/home/daniel/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/e4ecc2976f763f845a0163ebcdb49b50/res/drawable-xxxhdpi-v4/abc_btn_radio_to_on_mtrl_015.png"
     },

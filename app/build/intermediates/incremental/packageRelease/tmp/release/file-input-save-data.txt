@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Tue Feb 26 13:02:19 BRT 2019
+#Wed Feb 27 14:48:25 BRT 2019
 0.baseType=DIRECTORY
 0.base=/home/daniel/AndroidStudioProjects/BSCBitcoinSimpleConverter/app/build/intermediates/dex/release/mergeDexRelease/out
 0.path=classes.dex

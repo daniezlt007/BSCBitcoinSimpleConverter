@@ -443,7 +443,7 @@
     <string name="bottom_sheet_behavior" translatable="false">android.support.design.widget.BottomSheetBehavior</string>
     <string name="btn_consultar">ATUALIZAR</string>
     <string name="character_counter_pattern" translatable="false">%1$d / %2$d</string>
-    <string name="codigoAdmob">ca-app-pub-1974086740128373/9663553135</string>
+    <string name="codigoAdmob">ca-app-pub-1974086740128373/4545585560</string>
     <string name="codigoIdApk">ca-app-pub-1974086740128373~6640975025</string>
     <string name="common_google_play_services_unknown_issue"><ns1:g id="app_name">%1$s</ns1:g> is having trouble with Google Play services. Please try again.</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>

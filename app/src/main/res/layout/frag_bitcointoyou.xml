@@ -92,8 +92,7 @@
         android:layout_marginLeft="35dp"
         ads:adSize="BANNER"
         android:layout_gravity="bottom"
-        ads:adUnitId="@string/codigoAdmob">
-    </com.google.android.gms.ads.AdView>
+        ads:adUnitId="@string/codigoAdmob"></com.google.android.gms.ads.AdView>
     <TextView
         android:id="@+id/textViewBitCoinToYouTaxa"
         android:layout_width="wrap_content"
